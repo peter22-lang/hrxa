@@ -13,7 +13,7 @@ import accounts.entities.Account;
 import accounts.service.AccountService;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping  ("/accounts") 
 public class RestAccountController {
 	
 	private AccountService accountService;
@@ -36,7 +36,7 @@ public class RestAccountController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping 
 	public	Account postAccount(@RequestBody Account account) {
 		return accountService.createAccount(account);
 	}
