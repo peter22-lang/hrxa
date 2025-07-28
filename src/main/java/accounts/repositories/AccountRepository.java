@@ -15,5 +15,6 @@ public interface AccountRepository extends PagingAndSortingRepository<Account,Lo
 	
 	List<Account> findAccountsByFirstName(String firstName,Pageable pageable);
 	List<Account> findAccountsByType(AccountType type, Pageable pageable);
+	void deleteAccounts();
 
 }

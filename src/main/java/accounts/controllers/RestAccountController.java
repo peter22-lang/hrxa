@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import accounts.entities.Account;
 import accounts.entities.Account.AccountType;
-import accounts.service.AccountService;
+import accounts.service.AccountServiceImpl;
 
 @RestController
 @RequestMapping  ("/accounts") 
 public class RestAccountController {
 	
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 	
 	
-	public RestAccountController(AccountService accountService) {
+	public RestAccountController(AccountServiceImpl accountService) {
 		
 		this.accountService = accountService;
 
@@ -31,12 +31,12 @@ public class RestAccountController {
 	
 	@GetMapping
 	public Iterable<Account> getAccounts(){
-		return accountService.findAll();
+		return accountService.getAccounts();
 	}
 	
 	@GetMapping("/{id}")
 	public Account getAccountById(@PathVariable Long id)throws Exception{		
-		return accountService.findById(id);
+		return accountService.getAccountById(id);
 	}
 	
 	
@@ -47,7 +47,7 @@ public class RestAccountController {
 	
 	@DeleteMapping("/{id}")
 	public void deleteAccount(@PathVariable long id) {
-		accountService.deleteAccount(id);
+		accountService.deleteAccountById(id);
 	}
 	
 	@PutMapping("/{id}")
@@ -57,16 +57,16 @@ public class RestAccountController {
 	
 	@GetMapping("/type/{type}")
 	public List<Account> getAccountsByType(@PathVariable AccountType type){
-		return accountService.findAccountsByType(type);
+		return accountService.getAccountsByType(type);
 	}
 	@GetMapping("/firstName/{firstName}")
 	public List<Account> getAccountsByFirstName(@PathVariable String firstName){
-		return accountService.findAccountsByFirstName(firstName);
+		return accountService.getAccountsByFirstName(firstName);
 	}
 	
 	@GetMapping("/paged")
 	public Page<Account> getAllAccountsPaged(){
-		return accountService.findAllAccountsPaged();
+		return accountService.getAccountsPaged();
 	}
 }
 
