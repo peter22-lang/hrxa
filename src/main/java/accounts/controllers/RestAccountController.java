@@ -1,6 +1,8 @@
 package accounts.controllers;
 
+import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import accounts.entities.Account;
+import accounts.entities.Account.AccountType;
 import accounts.service.AccountService;
 
 @RestController
@@ -52,7 +55,19 @@ public class RestAccountController {
 		return accountService.updateAccount(id, account);
 	}
 	
-
+	@GetMapping("/type/{type}")
+	public List<Account> getAccountsByType(@PathVariable AccountType type){
+		return accountService.findAccountsByType(type);
+	}
+	@GetMapping("/firstName/{firstName}")
+	public List<Account> getAccountsByFirstName(@PathVariable String firstName){
+		return accountService.findAccountsByFirstName(firstName);
+	}
+	
+	@GetMapping("/paged")
+	public Page<Account> getAllAccountsPaged(){
+		return accountService.findAllAccountsPaged();
+	}
 }
 
 

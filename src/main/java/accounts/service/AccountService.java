@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import accounts.entities.Account;
@@ -17,7 +18,7 @@ public class AccountService {
 	
 	private AccountRepository accountRepository;
 	
-	Pageable firstPageWithTwo = PageRequest.of(0,2);
+	Pageable firstPageWithTwo = PageRequest.of(0,2,Sort.by("firstName"));
 	Pageable secondPageWithFour = PageRequest.of(1, 4);
 	
 	public AccountService(AccountRepository accountRepository) {
@@ -58,7 +59,7 @@ public class AccountService {
 		return accountRepository.findAll(firstPageWithTwo);
 	}
 	
-	public List<Account> findAccountsByType(String type){
+	public List<Account> findAccountsByType(AccountType type){
 		return accountRepository.findAccountsByType(type, firstPageWithTwo);
 	}
 	
