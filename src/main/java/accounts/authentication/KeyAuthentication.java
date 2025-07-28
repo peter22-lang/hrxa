@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 public class KeyAuthentication extends AbstractAuthenticationToken{
 	
 	
-	private static final long serialVersionUID = UUID.randomUUID().timestamp();
+//	private static final long serialVersionUID = UUID.randomUUID().timestamp();
 	private final String apiKey;	
 	
 	public KeyAuthentication(String apiKey, Collection<? extends GrantedAuthority> authorities) {
