@@ -14,7 +14,6 @@ import accounts.entities.Account.AccountType;
 public interface AccountRepository extends PagingAndSortingRepository<Account,Long>,ListCrudRepository<Account,Long> {
 	
 	List<Account> findAccountsByFirstName(String firstName,Pageable pageable);
-	List<Account> findAccountsByType(AccountType type, Pageable pageable);
-	void deleteAccounts();
+	List<Account> findAccountsByAccountType(AccountType accountType, Pageable pageable);
 
 }

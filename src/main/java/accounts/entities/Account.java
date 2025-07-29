@@ -1,6 +1,9 @@
 package accounts.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,7 +14,7 @@ import jakarta.persistence.Id;
 public class Account {
 	
 	public static enum AccountType{
-		BASIC,CURRENT,FIXED_DEPOSIT,SAVINGS
+		BASIC,FIXED_DEPOSIT,CURRENT,SAVINGS
 	}
 	
 	@Id
@@ -19,21 +22,24 @@ public class Account {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private AccountType type; 
+	@Enumerated(EnumType.STRING)
+	@Column(name="account_type")
+	private AccountType accountType; 
 	
+	public AccountType getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
 	public Account() {
 	}
-	public AccountType getType() {
-		return type;
-	}
-	public void setType(AccountType type) {
-		this.type = type;
-	}
-	public Account(Long id, String firstName, String lastName,AccountType type) {
+
+	public Account(Long id, String firstName, String lastName,AccountType accoountType) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.type = type;
+		this.accountType = accoountType;
 	}
 	/*
 	 * public Account(String firstName,String lastName) {

@@ -1,0 +1,11 @@
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (1, 'Bruce', 'Banner', 'BASIC');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (2, 'Bruce', 'Wayne', 'FIXED_DEPOSIT');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (3, 'Clark', 'Kent', 'CURRENT');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (4, 'Penelope', 'Pitstop', 'SAVINGS');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (5, 'Peter', 'Parker', 'BASIC');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (6, 'John', 'Smith', 'CURRENT');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (7, 'Jane', 'Doe', 'BASIC');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (8, 'David', 'Jones', 'CURRENT');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (9, 'Tom', 'Sawyer', 'BASIC');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (10, 'Jack', 'White', 'BASIC');
+INSERT INTO ACCOUNT(id,first_name,last_name,account_type) VALUES (11, 'Sue', 'Smith', 'FIXED_DEPOSIT');

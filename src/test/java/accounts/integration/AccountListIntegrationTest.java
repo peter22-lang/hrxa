@@ -36,7 +36,7 @@ public class AccountListIntegrationTest {
 		Account acc3 = new Account(15L,"David","Blane",AccountType.SAVINGS);
 		accListRepository.saveAll(Arrays.asList(acc1, acc2,acc3));
 		
-		List<Account> accounts = accListRepository.findAccountsByType(AccountType.SAVINGS);
+		List<Account> accounts = accListRepository.findAccountsByAccountType(AccountType.SAVINGS);
 		assertEquals(2,accounts.size());
 		
 	}

@@ -11,6 +11,6 @@ import accounts.entities.Account.AccountType;
 @Repository
 public interface AccountListRepository extends ListCrudRepository<Account,Long>{
 	
-	List <Account> findAccountsByType(AccountType type);
+	List <Account> findAccountsByAccountType(AccountType accountType);
 
 }

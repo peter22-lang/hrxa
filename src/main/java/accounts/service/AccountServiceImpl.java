@@ -3,6 +3,7 @@ package accounts.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,15 +17,17 @@ import accounts.repositories.AccountRepository;
 @Service
 public class AccountServiceImpl implements AccountService{
 	
+	@Autowired
 	private AccountRepository accountRepository;
 	
 	Pageable firstPageWithTwo = PageRequest.of(0,2,Sort.by("firstName"));
 	Pageable secondPageWithFour = PageRequest.of(1, 4);
 	Pageable pageByFive = PageRequest.of(0, 5,Sort.by("firstName"));
 	
-	public AccountServiceImpl(AccountRepository accountRepository) {
-		this.accountRepository = accountRepository;
-	}
+	/*
+	 * public AccountServiceImpl(AccountRepository accountRepository) {
+	 * this.accountRepository = accountRepository; }
+	 */
 	
 	public Account getAccountById(long id) {
 		Optional<Account> acc = accountRepository.findById(id);
@@ -52,7 +55,7 @@ public class AccountServiceImpl implements AccountService{
 				.map(acc -> {
 					acc.setFirstName(account.getFirstName());
 					acc.setLastName(account.getLastName());
-					acc.setType(account.getType());
+					acc.setAccountType(account.getAccountType());
 					return accountRepository.save(acc);
 				})
 				.orElseGet(( ) -> {
@@ -64,8 +67,8 @@ public class AccountServiceImpl implements AccountService{
 		return accountRepository.findAll(pageByFive);
 	}
 	
-	public List<Account> getAccountsByType(AccountType type){
-		return accountRepository.findAccountsByType(type, firstPageWithTwo);
+	public List<Account> getAccountsByType(AccountType accountType){
+		return accountRepository.findAccountsByAccountType(accountType, firstPageWithTwo);
 	}
 	
 	public List<Account> getAccountsByFirstName(String firstName){
