@@ -6,11 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import accounts.entities.Account;
 import accounts.entities.Account.AccountType;
 
 @Repository
+@Transactional
 public interface AccountRepository extends PagingAndSortingRepository<Account,Long>,ListCrudRepository<Account,Long> {
 	
 	List<Account> findAccountsByFirstName(String firstName,Pageable pageable);

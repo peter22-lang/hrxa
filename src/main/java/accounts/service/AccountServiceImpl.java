@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import accounts.entities.Account;
 import accounts.entities.Account.AccountType;
@@ -38,18 +39,21 @@ public class AccountServiceImpl implements AccountService{
 		return accountRepository.findAll();
 	}
 	
+	@Transactional
 	public Account createAccount(Account account) {
-		return accountRepository.save(account);
+			return accountRepository.save(account);
 	}
-	
+	@Transactional
 	public void deleteAccountById(long id) {
 		accountRepository.deleteById(id);
 	}
 	
+	@Transactional
 	public void deleteAccounts() {
 		accountRepository.deleteAll();
 	}
 	
+	@Transactional
 	public Account updateAccount(long id, Account account) {
 		return accountRepository.findById(id)
 				.map(acc -> {
