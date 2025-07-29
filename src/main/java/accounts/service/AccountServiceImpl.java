@@ -25,11 +25,7 @@ public class AccountServiceImpl implements AccountService{
 	Pageable secondPageWithFour = PageRequest.of(1, 4);
 	Pageable pageByFive = PageRequest.of(0, 5,Sort.by("firstName"));
 	
-	/*
-	 * public AccountServiceImpl(AccountRepository accountRepository) {
-	 * this.accountRepository = accountRepository; }
-	 */
-	
+
 	public Account getAccountById(long id) {
 		Optional<Account> acc = accountRepository.findById(id);
 		return acc.get();

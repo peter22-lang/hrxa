@@ -4,8 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
@@ -18,8 +16,8 @@ public class Account {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "id")
+	private long id;
 	private String firstName;
 	private String lastName;
 	@Enumerated(EnumType.STRING)
@@ -41,10 +39,11 @@ public class Account {
 		this.lastName = lastName;
 		this.accountType = accoountType;
 	}
-	/*
-	 * public Account(String firstName,String lastName) {
-	 * this(UUID.randomUUID().toString(),firstName,lastName); }
-	 */
+	
+	  public Account(String firstName,String lastName,AccountType accountType) {
+		  this(null,firstName,lastName,accountType); 
+	  }
+	 
 
 	public String getFirstName() {
 		return firstName;

@@ -29,11 +29,6 @@ public class RestAccountController {
 	@Autowired
 	private AccountService accountService;
 
-	/*
-	 * public RestAccountController(AccountService accountService) {
-	 * this.accountService= accountService; }
-	 */
-
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	@Operation(summary = "Provides all accounts available in the application")
